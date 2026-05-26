@@ -45,7 +45,7 @@ func login() (*http.Client, error) {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent {
 		return nil, fmt.Errorf("login returned status %d", resp.StatusCode)
 	}
 	return client, nil
