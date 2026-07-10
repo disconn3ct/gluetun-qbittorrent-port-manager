@@ -6,9 +6,15 @@ type ConfigStruct struct {
 	Environment        string            `json:"environment"`
 	LogLevel           string            `json:"log_level"`
 	Interval           int               `json:"interval"`
+	Timeout            int               `json:"timeout"`
 	WaitForQBitTorrent bool              `json:"wait_for_qbittorrent"`
-	PortFile           string            `json:"port_file"`
+	Gluetun            GluetunConfig     `json:"gluetun"`
 	QBitTorrent        QBitTorrentConfig `json:"qbittorrent"`
+}
+
+type GluetunConfig struct {
+	IP       string `json:"ip"`
+	Port     int    `json:"port"`
 }
 
 type QBitTorrentConfig struct {
@@ -21,4 +27,8 @@ type QBitTorrentConfig struct {
 
 type QBitTorrentAppPreferences struct {
 	ListenPort int `json:"listen_port"`
+}
+
+type GluetunPortForward struct {
+	Port int `json:"port"`
 }

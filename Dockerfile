@@ -18,16 +18,17 @@ FROM alpine:3.20
 ENV PUID=1000 PGID=1000 LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 WORKDIR /app
-RUN apk add --no-cache ffmpeg flac ca-certificates tzdata
-
-COPY --from=builder /app/gluetun-qbittorrent-port-manager /app/gluetun-qbittorrent-port-manager
-COPY --from=builder /app/entrypoint.sh /app/entrypoint.sh
 
 RUN addgroup -g ${PGID} appgroup && \
-    adduser -D -u ${PUID} -G appgroup appuser && \
-    chmod +x /app/gluetun-qbittorrent-port-manager /app/entrypoint.sh && \
+    adduser -D -u ${PUID} -G appgroup appuser
+
+RUN apk add --no-cache ca-certificates tzdata
+
+COPY --from=builder /app/gluetun-qbittorrent-port-manager /app/gluetun-qbittorrent-port-manager
+
+RUN chmod +x /app/gluetun-qbittorrent-port-manager && \
     chown -R appuser:appgroup /app
 
 USER appuser
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/gluetun-qbittorrent-port-manager"]
