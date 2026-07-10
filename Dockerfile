@@ -14,7 +14,7 @@ RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
     go build -trimpath -ldflags="-s -w" -o /app/gluetun-qbittorrent-port-manager .
 
 # ---------- Runtime ----------
-FROM alpine:3.20
+FROM alpine:3.24@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
 ENV PUID=1000 PGID=1000 LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 WORKDIR /app
