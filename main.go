@@ -184,7 +184,7 @@ func main() {
 
 	// wait for the port before proceeding
 	for {
-		if _, err := readPortFromApi(); err != nil {
+		if port, err := readPortFromApi(); err != nil && port != 0 {
 			modules.Log.Warnf("Failed to get port: %s", err.Error())
 		 	modules.Log.Warn("Retrying in 10s")
 			time.Sleep(10 * time.Second)
