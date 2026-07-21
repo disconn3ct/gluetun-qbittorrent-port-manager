@@ -19,7 +19,7 @@ jobs:
         - goarch: arm
           goos: windows
     steps:
-    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
     - uses: wangyoucao577/go-release-action@279495102627de7960cbc33434ab01a12bae144b # v1.55
       with:
         github_token: ${{ secrets.GIT_HUB_TOKEN }}
