@@ -1,5 +1,5 @@
 # ---------- Build ----------
-FROM golang:1.26.5-alpine@sha256:0178a641fbb4858c5f1b48e34bdaabe0350a330a1b1149aabd498d0699ff5fb2 AS builder
+FROM golang:1.27.4-alpine@sha256:0a5f7fe796599ff487605987432e7619ae45beeb2fba4c2ce0b907879932aebf AS builder
 ARG TARGETOS
 ARG TARGETARCH
 WORKDIR /app
